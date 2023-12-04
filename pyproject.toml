@@ -23,4 +23,4 @@ dependencies = [
 wiggler = "wiggler.cli:main"
 
 [project.urls]
-"Homepage" = "https://github.com/studiorabota/wiggle-bin"
+"Homepage" = "https://github.com/wiggle-bin/wiggle-cli.git"
