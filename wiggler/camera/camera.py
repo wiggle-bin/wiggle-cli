@@ -22,3 +22,4 @@ def start_recording(minutes: int = 1):
 def stop_recording():
     cron = CronTab(user=os.getlogin())
     cron.remove_all(comment='wiggler recording')
+    cron.write()

@@ -68,7 +68,7 @@ def main():
         pixels.on(args.light)
     elif args.light_off:
         pixels.off()
-    elif args.camera_picture:
+    elif args.picture:
         cameraControl.picture()
     elif args.recording:
         if args.recording == 'start':
