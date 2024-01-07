@@ -8,7 +8,7 @@ from fastapi.responses import StreamingResponse, Response
 from pathlib import Path
 import glob
 import io
-from wiggler.light import pixels
+from wiggler.neopixels import neopixels
 
 BASE_FOLDER = Path.home() / 'WiggleR'
 IMG_FOLDER = f"{BASE_FOLDER}/Pictures"
@@ -171,12 +171,12 @@ def take_picture():
 
 @app.get("/light/on/{intensity}", tags=[TAG_PERIPHERAL])
 async def light(intensity: float = 1):
-    pixels.on(intensity)
+    neopixels.on(intensity)
 
 
 @app.get("/light/off", tags=[TAG_PERIPHERAL])
 async def lightOff():
-    pixels.off()
+    neopixels.off()
 
 
 @app.get("/schedule/images/zip", tags=[TAG_ZIP])

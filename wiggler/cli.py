@@ -1,7 +1,7 @@
 import argparse
 import os
 from pathlib import Path
-from wiggler.light import pixels
+from wiggler.neopixels import neopixels as lightControl
 from wiggler.camera import camera as cameraControl
 
 def main():
@@ -65,9 +65,9 @@ def main():
         # message to connect to ports
         print('...')
     elif args.light:
-        pixels.on(args.light)
+        lightControl.on(args.light)
     elif args.light_off:
-        pixels.off()
+        lightControl.off()
     elif args.picture:
         cameraControl.picture()
     elif args.recording:
