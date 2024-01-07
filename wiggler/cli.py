@@ -2,7 +2,7 @@ import argparse
 import os
 from pathlib import Path
 from wiggler.light import pixels
-from wiggler.display import pot_slider
+from wiggler.camera import camera as cameraControl
 
 def main():
 
@@ -22,6 +22,17 @@ def main():
     light.add_argument('--light-off', action='store_true',
                        help='turn light off')
 
+    camera = parser.add_argument_group("camera")
+    camera.add_argument('--picture', action='store_true',
+                       help='take one picture')
+
+    recording = parser.add_argument_group("recording")
+    recording.add_argument('--recording',
+                         const='status',
+                         nargs='?',
+                         choices=['stop', 'start'],
+                         help='control wiggler recording')
+
     service = parser.add_argument_group("service")
     service.add_argument('--service-install',
                          action='store_true',
@@ -32,9 +43,6 @@ def main():
                          choices=['stop', 'start',
                                   'status', 'disable', 'enable'],
                          help='control wiggler service')
-
-    display = parser.add_argument_group("display")
-    display.add_argument('--display', action='store_true', help='display images on screen')
 
     args = parser.parse_args()
 
@@ -60,8 +68,13 @@ def main():
         pixels.on(args.light)
     elif args.light_off:
         pixels.off()
-    elif args.display:
-        pot_slider.main()
+    elif args.camera_picture:
+        cameraControl.picture()
+    elif args.recording:
+        if args.recording == 'start':
+            cameraControl.start_recording()
+        elif args.recording == 'stop':
+            cameraControl.stop_recording()
     else:
         print("run wiggler -h for options")
 
