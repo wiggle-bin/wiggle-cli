@@ -30,7 +30,7 @@ def main():
     recording.add_argument('--recording',
                          const='status',
                          nargs='?',
-                         choices=['stop', 'start'],
+                         choices=['stop', 'start', 'picture'],
                          help='control wiggler recording')
 
     service = parser.add_argument_group("service")
@@ -48,7 +48,7 @@ def main():
 
     if args.install:
         os.system(f"mkdir WiggleR")
-        os.system(f"mkdir WiggleR/Videos WiggleR/Pictures WiggleR/Zip")
+        os.system(f"mkdir WiggleR/Videos WiggleR/Pictures WiggleR/Recording WiggleR/Zip WiggleR/CSV")
     elif args.server:
         os.system(f"uvicorn wiggler.main:app --reload --host 0.0.0.0")
     elif args.service_install:
@@ -75,6 +75,8 @@ def main():
             cameraControl.start_recording()
         elif args.recording == 'stop':
             cameraControl.stop_recording()
+        elif args.recording == 'picture':
+            cameraControl.picture_recording()
     else:
         print("run wiggler -h for options")
 
