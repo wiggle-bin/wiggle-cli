@@ -4,7 +4,9 @@ from datetime import datetime
 import shutil
 from crontab import CronTab
 
-BASE_FOLDER = Path.home() / 'WiggleR'
+HOME_FOLDER = Path.home()
+PACKAGE_FOLDER = HOME_FOLDER / ".local/bin/wiggler"
+BASE_FOLDER = HOME_FOLDER / 'WiggleR'
 IMG_FOLDER = BASE_FOLDER / "Pictures"
 RECORDING_FOLDER = BASE_FOLDER / "Recording"
 ACTIVE_RECORDING_FOLDER = RECORDING_FOLDER / "InProgress"
@@ -30,7 +32,7 @@ def picture_recording():
 def start_recording(minutes: int = 1):
     cron = CronTab(user=os.getlogin())
     cron.remove_all(comment='wiggler recording')
-    job = cron.new(command='wiggler --recording picture', comment='wiggler recording')
+    job = cron.new(command=f'{PACKAGE_FOLDER} --recording picture', comment='wiggler recording')
     job.minute.every(minutes)
     cron.write()
 
@@ -45,7 +47,7 @@ def stop_recording():
     # move recording to destination folder
     files = os.listdir(ACTIVE_RECORDING_FOLDER)
     if (files):
-        move_all_files(files, make_recording_result_folder())
+        move_all_files(ACTIVE_RECORDING_FOLDER, make_recording_result_folder(files))
     
     # remove from cron
     cron = CronTab(user=os.getlogin())
