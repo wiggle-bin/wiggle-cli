@@ -34,8 +34,7 @@ def start_recording(minutes: int = 1):
     job.minute.every(minutes)
     cron.write()
 
-def make_recording_result_folder():
-    files = os.listdir(ACTIVE_RECORDING_FOLDER)
+def make_recording_result_folder(files):
     start, _ = os.path.splitext(files[0])
     end, _ = os.path.splitext(files[-1])
     folder = RECORDING_FOLDER / f"{start}--{end}"
@@ -44,7 +43,9 @@ def make_recording_result_folder():
 
 def stop_recording():
     # move recording to destination folder
-    move_all_files(ACTIVE_RECORDING_FOLDER, make_recording_result_folder())
+    files = os.listdir(ACTIVE_RECORDING_FOLDER)
+    if (files):
+        move_all_files(files, make_recording_result_folder())
     
     # remove from cron
     cron = CronTab(user=os.getlogin())
