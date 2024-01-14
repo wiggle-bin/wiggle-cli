@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from wiggler.neopixels import neopixels as lightControl
 from wiggler.camera import camera as cameraControl
+from wiggler.experiment import experiment as experimentControl
 
 def main():
 
@@ -30,8 +31,15 @@ def main():
     recording.add_argument('--recording',
                          const='status',
                          nargs='?',
-                         choices=['stop', 'start', 'picture'],
+                         choices=['stop', 'start'],
                          help='control wiggler recording')
+    
+    experiment = parser.add_argument_group("experiment")
+    experiment.add_argument('--experiment',
+                         const='status',
+                         nargs='?',
+                         choices=['stop', 'start'],
+                         help='start or stop experiment')
 
     service = parser.add_argument_group("service")
     service.add_argument('--service-install',
@@ -75,8 +83,11 @@ def main():
             cameraControl.start_recording()
         elif args.recording == 'stop':
             cameraControl.stop_recording()
-        elif args.recording == 'picture':
-            cameraControl.picture_recording()
+    elif args.experiment:
+        if args.experiment == 'start':
+            experimentControl.log_experiment('start')
+        elif args.experiment == 'stop':
+            experimentControl.log_experiment('stop')
     else:
         print("run wiggler -h for options")
 
