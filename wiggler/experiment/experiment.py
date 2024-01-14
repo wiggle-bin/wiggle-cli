@@ -18,7 +18,7 @@ def create_csv_file(filePath = EXPERIMENTS_FILE):
     if not os.path.exists(filePath):
         with open(filePath, 'w', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(['id', 'start', 'stop'])
+            writer.writerow(['date', 'tag'])
 
 def get_last_entry(filePath = EXPERIMENTS_FILE):
     with open(filePath, 'r') as file:
