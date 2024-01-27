@@ -17,7 +17,7 @@ def picture(folder = IMG_FOLDER):
 def start_recording(minutes: int = 1):
     cron = CronTab(user=os.getlogin())
     cron.remove_all(comment='wiggler recording')
-    job = cron.new(command=f'{PACKAGE_FOLDER} --camera picture', comment='wiggler recording')
+    job = cron.new(command=f'{PACKAGE_FOLDER} --picture', comment='wiggler recording')
     job.minute.every(minutes)
     cron.write()
 
