@@ -12,7 +12,6 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-  'fastapi[all]>=0.68.0,<0.69.0',
   'python-crontab>=3.0.0,<4.0.0',
   'rpi_ws281x',
   'adafruit-circuitpython-neopixel',
