@@ -15,11 +15,13 @@ dependencies = [
   'python-crontab>=3.0.0,<4.0.0',
   'rpi_ws281x',
   'adafruit-circuitpython-neopixel',
-  'pillow'
+  'pillow',
+  'picamera2'
 ]
 
 [project.scripts]
 wiggler = "wiggler.cli:main"
+wiggle_record_install = "wiggler.install:install"
 
 [project.urls]
 "Homepage" = "https://github.com/wiggle-bin/wiggle-cli.git"

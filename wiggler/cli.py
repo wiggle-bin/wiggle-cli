@@ -26,6 +26,8 @@ def main():
     camera = parser.add_argument_group("camera")
     camera.add_argument('--picture', action='store_true',
                        help='take one picture')
+    camera.add_argument('--pictures', action='store_true',
+                       help='take multiple picture')
 
     recording = parser.add_argument_group("recording")
     recording.add_argument('--recording',
@@ -78,6 +80,8 @@ def main():
         lightControl.off()
     elif args.picture:
         cameraControl.picture()
+    elif args.pictures:
+        cameraControl.pictures()
     elif args.recording:
         if args.recording == 'start':
             cameraControl.start_recording()
