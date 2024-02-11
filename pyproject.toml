@@ -1,27 +1,20 @@
 [project]
-name = "wiggler_studiorabota"
+name = "wiggle"
 version = "0.0.47"
 authors = [
   { name="Vincent Kranendonk" },
 ]
-description = "WiggleR - Desktop research unit for making controlled experiments"
+description = "WiggleCLI - CLI for controlling the WiggleBin"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
 ]
-dependencies = [
-  'python-crontab>=3.0.0,<4.0.0',
-  'rpi_ws281x',
-  'adafruit-circuitpython-neopixel',
-  'pillow',
-  'picamera2'
-]
+dependencies = []
 
 [project.scripts]
-wiggler = "wiggler.cli:main"
-wiggle_record_install = "wiggler.install:install"
+wiggle = "wiggle.cli:main"
 
 [project.urls]
 "Homepage" = "https://github.com/wiggle-bin/wiggle-cli.git"
