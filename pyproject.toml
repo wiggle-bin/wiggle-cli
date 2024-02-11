@@ -1,5 +1,5 @@
 [project]
-name = "wiggle"
+name = "wiggle-cli"
 version = "0.0.47"
 authors = [
   { name="Vincent Kranendonk" },
@@ -15,6 +15,7 @@ dependencies = []
 
 [project.scripts]
 wiggle = "wiggle.cli:main"
+wiggle-cli = "wiggle.cli:main"
 
 [project.urls]
 "Homepage" = "https://github.com/wiggle-bin/wiggle-cli.git"

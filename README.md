@@ -5,40 +5,13 @@ Control the [WiggleR](https://github.com/wiggle-bin/wiggle-r) via the command li
 ## Installation
 
 ```
-pip3 install wiggler_studiorabota
+pip3 install wiggle-cli
 ```
 
 ## Documentation
 
 ```
-wiggler -h
-```
-
-## Enable recording service
-
-In the terminal run `wiggle_record_install`. This will install and start a service which runs `wiggler --record` to take pictures every couple of seconds.
-
-```
-wiggle_record_install
-```
-
-
-You can check the status with:
-
-```
-systemctl --user status wiggle_record.service
-```
-
-To stop the service run:
-
-```
-systemctl --user stop wiggle_record.service
-```
-
-To start the service run:
-
-```
-systemctl --user start wiggle_record.service
+wiggle-cli -h
 ```
 
 ## Installation for development
